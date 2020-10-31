@@ -1,18 +1,33 @@
-var tweet=["sachin tweet1","sehwag tweet1","kholi tweet1","sachin tweet1","kholi tweet1"];
+var tweet=["sachin tweet1","sehwag tweet1","kholi tweet1","sachin tweet2","kholi tweet2","sachin tweet3","kholi tweet3","kholi tweet4","sachin tweets4","kholi tweet5"];
 var obj={};
-for(word of tweet){
-    if(word in obj){
-        obj[word]+=1;
-    }else{
-        obj[word]=1;
+var arr=[];
+for(words of tweet){
+    arr=words.split(" ");
+    arr.pop();
+    for(wrd of arr){
+        if(wrd in obj){
+            obj[wrd]+=1;
+        }else{
+            obj[wrd]=1;
+        }
     }
 }
-for(key1 in obj){
-    for(key2 in obj){
-        if(obj[key1]>obj[key2]){
-            console.log("More tweets by "+key1);
-            break;
-        }
-    } 
-    break;
+var karr=Object.values(obj);
+var lar=karr.reduce((i,j)=>i>j?i:j);
+var srt=karr.sort((i,j)=>j-i);
+for(key in obj){
+    if(obj[key]==lar){
+        console.log("More tweets by "+key);
+        break;
+    }
 }
+var obj2={};
+for(val of srt){
+    for(key in obj){
+        if(obj[key]==val){
+            obj2[key]=val; 
+        }
+    }
+}
+console.log("Tweets in sorted order: ");
+console.log(obj2);
